@@ -25,5 +25,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "iprogress>=0.4",
     "ipykernel>=7.1.0",
 ]
