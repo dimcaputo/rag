@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     @chain
     def retriever(query: str) -> List[Document]:
-        return vector_store.similarity_search_with_score(query, k=10)
+        return vector_store.similarity_search_with_score(query, k=5)
 
     response = retriever.batch(
         [
