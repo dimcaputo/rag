@@ -12,14 +12,12 @@ if __name__ == "__main__":
 
     folder_to_check = sys.argv[1]
 
-    
-
     filepaths = []
     for root, dirs, files in os.walk(folder_to_check):
         for file in files:
             filepaths.append(os.path.join(root, file))
 
-
+    print("## LOADING FILES ######################################")
     loader = DoclingLoader(
         file_path=filepaths,
         export_type=ExportType.MARKDOWN
@@ -27,6 +25,7 @@ if __name__ == "__main__":
 
     docs = loader.load()
 
+    print("## SPLITTING FILES ####################################")
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,  # chunk size (characters)
         chunk_overlap=200,  # chunk overlap (characters)
@@ -34,6 +33,7 @@ if __name__ == "__main__":
     )
     all_splits = text_splitter.split_documents(docs)
 
+    print("## LOADING OR CREATING DATABASE #######################")
     os.system("ollama pull nomic-embed-text")
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
@@ -43,4 +43,6 @@ if __name__ == "__main__":
         index_params={"index_type": "FLAT", "metric_type": "L2"},
     )
 
+
+    print("## INGESTING FILES ####################################")
     ids = vector_store.add_documents(documents=all_splits, nullable=True)
