@@ -12,6 +12,9 @@ if __name__ == "__main__":
 
     folder_to_check = sys.argv[1]
 
+    if not os.path.exists(folder_to_check):
+        raise FileNotFoundError('Please input a valid path.')
+
     filepaths = []
     for root, dirs, files in os.walk(folder_to_check):
         for file in files:
@@ -42,7 +45,6 @@ if __name__ == "__main__":
         connection_args={"uri": "./milvus_example.db"},
         index_params={"index_type": "FLAT", "metric_type": "L2"},
     )
-
 
     print("## INGESTING FILES ####################################")
     ids = vector_store.add_documents(documents=all_splits, nullable=True)
