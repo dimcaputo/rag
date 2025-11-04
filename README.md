@@ -1,7 +1,8 @@
 # rag
 Training on RAG
 
-Please download and install Ollama prior to running the scripts (https://ollama.com/download)
+Please download and install Ollama prior to running the scripts (https://ollama.com/download).
+
 The embedding model will be pulled by the scripts.
 
 To build the database:
