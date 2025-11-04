@@ -20,13 +20,16 @@ if __name__ == "__main__":
         for file in files:
             filepaths.append(os.path.join(root, file))
 
+    print(f"{len(filepaths)} pdf files will be loaded.")
+
     print("## LOADING FILES ######################################")
     loader = DoclingLoader(
         file_path=filepaths,
         export_type=ExportType.MARKDOWN
     )
-
+    
     docs = loader.load()
+    print(f"The {len(filepaths)} pdf files were loaded and gave {len(docs)} langchain documents.")
 
     print("## SPLITTING FILES ####################################")
     text_splitter = RecursiveCharacterTextSplitter(
@@ -35,8 +38,13 @@ if __name__ == "__main__":
         add_start_index=True,  # track index in original document
     )
     all_splits = text_splitter.split_documents(docs)
+    print(f"{len(all_splits)} splits were created")
 
-    print("## LOADING OR CREATING DATABASE #######################")
+    if os.path.exists("./milvus_example.db"):
+        print("## LOADING DATABASE ################################")
+    else:
+        print("## CREATING DATABASE ###############################")
+
     os.system("ollama pull nomic-embed-text")
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
@@ -45,6 +53,11 @@ if __name__ == "__main__":
         connection_args={"uri": "./milvus_example.db"},
         index_params={"index_type": "FLAT", "metric_type": "L2"},
     )
+    
+    if os.path.exists("./milvus_example.db"):
+        print("Database at ./milvus_example.db loaded")
+    else:
+        print("Database at ./milvus_example.db created")
 
     print("## INGESTING FILES ####################################")
     ids = vector_store.add_documents(documents=all_splits)
