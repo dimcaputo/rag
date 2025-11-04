@@ -44,7 +44,8 @@ if __name__ == "__main__":
         print("\n## LOADING DATABASE ################################\n")
     else:
         print("\n## CREATING DATABASE ###############################\n")
-
+    
+    print("Pulling ollama embedding model...")
     os.system("ollama pull nomic-embed-text")
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
