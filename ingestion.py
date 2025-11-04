@@ -20,30 +20,30 @@ if __name__ == "__main__":
         for file in files:
             filepaths.append(os.path.join(root, file))
 
-    print(f"{len(filepaths)} pdf files will be loaded.")
+    print(f"\n{len(filepaths)} pdf files will be loaded.\n")
 
-    print("## LOADING FILES ######################################")
+    print("\n## LOADING FILES ######################################\n")
     loader = DoclingLoader(
         file_path=filepaths,
         export_type=ExportType.MARKDOWN
     )
     
     docs = loader.load()
-    print(f"The {len(filepaths)} pdf files were loaded and gave {len(docs)} langchain documents.")
+    print(f"\nThe {len(filepaths)} pdf files were loaded and gave {len(docs)} langchain documents.\n")
 
-    print("## SPLITTING FILES ####################################")
+    print("\n## SPLITTING FILES ####################################\n")
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,  # chunk size (characters)
         chunk_overlap=200,  # chunk overlap (characters)
         add_start_index=True,  # track index in original document
     )
     all_splits = text_splitter.split_documents(docs)
-    print(f"{len(all_splits)} splits were created")
+    print(f"\n{len(all_splits)} splits were created\n")
 
     if os.path.exists("./milvus_example.db"):
-        print("## LOADING DATABASE ################################")
+        print("\n## LOADING DATABASE ################################\n")
     else:
-        print("## CREATING DATABASE ###############################")
+        print("\n## CREATING DATABASE ###############################\n")
 
     os.system("ollama pull nomic-embed-text")
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
@@ -55,9 +55,10 @@ if __name__ == "__main__":
     )
     
     if os.path.exists("./milvus_example.db"):
-        print("Database at ./milvus_example.db loaded")
+        print("\nDatabase at ./milvus_example.db loaded\n")
     else:
-        print("Database at ./milvus_example.db created")
+        print("\nDatabase at ./milvus_example.db created\n")
 
-    print("## INGESTING FILES ####################################")
+    print("\n## INGESTING FILES ####################################\n")
     ids = vector_store.add_documents(documents=all_splits)
+    print("\nThe files were ingested into the database.\n")
