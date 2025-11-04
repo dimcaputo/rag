@@ -12,6 +12,7 @@ if __name__ == "__main__":
 
     folder_to_check = sys.argv[1]
 
+    
 
     filepaths = []
     for root, dirs, files in os.walk(folder_to_check):
@@ -33,6 +34,7 @@ if __name__ == "__main__":
     )
     all_splits = text_splitter.split_documents(docs)
 
+    os.system("ollama pull nomic-embed-text")
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
     vector_store = Milvus(

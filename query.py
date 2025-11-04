@@ -5,11 +5,13 @@ from langchain_core.documents import Document
 from langchain_core.runnables import chain
 from langchain_milvus import Milvus
 import sys
+import os
 
 if __name__ == "__main__":
 
     query = sys.argv[1]
 
+    os.system("ollama pull nomic-embed-text")
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
     vector_store = Milvus(
