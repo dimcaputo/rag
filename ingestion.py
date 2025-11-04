@@ -47,4 +47,4 @@ if __name__ == "__main__":
     )
 
     print("## INGESTING FILES ####################################")
-    ids = vector_store.add_documents(documents=all_splits, nullable=True)
+    ids = vector_store.add_documents(documents=all_splits)
