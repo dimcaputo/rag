@@ -6,6 +6,7 @@ from langchain_milvus import Milvus
 import os
 from langchain_docling.loader import ExportType
 import sys
+import requests
 
 
 if __name__ == "__main__":
@@ -45,8 +46,12 @@ if __name__ == "__main__":
     else:
         print("\n## CREATING DATABASE ###############################\n")
     
-    print("Pulling ollama embedding model...")
-    os.system("ollama pull nomic-embed-text")
+    
+    req = requests.get("http://localhost:11434/api/tags").json()
+    model_is_nomic = [True for model in req['models'] if "nomic-embed-text" in model['name']]
+    if not any(model_is_nomic):
+        print("Pulling ollama embedding model...")
+        os.system("ollama pull nomic-embed-text")
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
     vector_store = Milvus(
