@@ -3734,6 +3734,7 @@ dependencies = [
     { name = "pymilvus", extra = ["milvus-lite"] },
     { name = "pypdf" },
     { name = "python-dotenv" },
+    { name = "transformers" },
 ]
 
 [package.dev-dependencies]
@@ -3760,6 +3761,7 @@ requires-dist = [
     { name = "pymilvus", extras = ["milvus-lite"], specifier = ">=2.6.3" },
     { name = "pypdf", specifier = ">=6.1.3" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
+    { name = "transformers", specifier = ">=4.57.1" },
 ]
 
 [package.metadata.requires-dev]
