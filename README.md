@@ -1,6 +1,9 @@
 # rag
 Training on RAG
 
+Ollama is needed to run these scripts.
+
+
 To build the database:
 
 ~~~bash
