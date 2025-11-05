@@ -1,22 +1,19 @@
 
-from langchain_docling import DoclingLoader
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings, ChatOllama
-from langchain_milvus import Milvus
+
 import os
-from langchain_docling.loader import ExportType
+
 import sys
 import requests
-from langchain_pymupdf4llm import PyMuPDF4LLMLoader
-from langchain_community.document_loaders.parsers import RapidOCRBlobParser
-from langchain_community.document_loaders import FileSystemBlobLoader
-from langchain_community.document_loaders.generic import GenericLoader
-from langchain_pymupdf4llm import PyMuPDF4LLMParser
+
+
 from langchain_community.document_loaders.parsers import TesseractBlobParser
-from langchain_community.document_loaders.parsers import LLMImageBlobParser
+
 from langchain_community.document_loaders import PDFMinerLoader
-import pytesseract
-from langchain_google_genai import ChatGoogleGenerativeAI
+
+
 import dotenv
 from langchain_chroma import Chroma
 
@@ -48,6 +45,7 @@ if __name__ == "__main__":
         )
 
         docs = loader.load()
+        print(docs[0].page_content)
 
         print(f"\nThe {len(filepaths)} pdf files were loaded and gave {len(docs)} langchain documents.\n")
 
