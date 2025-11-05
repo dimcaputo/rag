@@ -8,7 +8,7 @@ import sys
 import os
 import requests
 import ollama
-
+from langchain_chroma import Chroma
 
 req = requests.get("http://localhost:11434/api/tags").json()
 model_is_nomic = [True for model in req['models'] if "nomic-embed-text" in model['name']]
@@ -18,10 +18,10 @@ if not any(model_is_nomic):
     
 embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
-vector_store = Milvus(
+vector_store = Chroma(
+    collection_name="example_collection",
     embedding_function=embeddings,
-    connection_args={"uri": "./milvus_example.db"},
-    index_params={"index_type": "FLAT", "metric_type": "L2"},
+    persist_directory="./chroma_langchain_db",  # Where to save data locally, remove if not necessary
 )
 
 @chain
@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
     results = get_results(query, retriever)
 
-    for i,item in results:
+    for i,item in results.items():
         print(f"Score = {item['score']}")
         print("Chunk " + "*"*50)
         print(item['chunk'])
