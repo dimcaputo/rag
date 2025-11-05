@@ -4130,7 +4130,7 @@ dependencies = [
 requires-dist = [
     { name = "arize-phoenix", specifier = ">=12.9.0" },
     { name = "arize-phoenix-otel", specifier = ">=0.13.1" },
-    { name = "chainlit" },
+    { name = "chainlit", specifier = ">=2.8.4" },
     { name = "chromadb" },
     { name = "google-genai", specifier = ">=1.48.0" },
     { name = "langchain" },

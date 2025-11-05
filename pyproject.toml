@@ -7,7 +7,7 @@ requires-python = ">=3.11"
 dependencies = [
     "arize-phoenix>=12.9.0",
     "arize-phoenix-otel>=0.13.1",
-    "chainlit",
+    "chainlit>=2.8.4",
     "chromadb",
     "google-genai>=1.48.0",
     "langchain",
