@@ -1,3 +1,5 @@
 draft.ipynb
 __pycache__
 *.db
+chroma*
+.env
