@@ -9,7 +9,7 @@ import json
 from phoenix.otel import register
 from openinference.semconv.trace import SpanAttributes
 
-class Quierier:
+class Inquisita:
     def __init__(self):
         self.req = requests.get("http://localhost:11434/api/tags").json()
         model_is_nomic = [True for model in self.req['models'] if "nomic-embed-text" in model['name']]
