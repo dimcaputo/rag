@@ -33,7 +33,7 @@ class Inquisita:
 
 
     def query(self, query):
-        tracer_provider = register(project_name="Quierier", auto_instrument=True)
+        tracer_provider = register(project_name="Inquisita", auto_instrument=True)
         tracer = tracer_provider.get_tracer(__name__)
 
         with tracer.start_as_current_span("chat_interaction") as span:
@@ -49,12 +49,13 @@ class Inquisita:
             span.set_attribute(SpanAttributes.LLM_PROMPTS, messages[0]['content'])
 
 
-            stream = chat(model='gemma3:4b', messages=messages, stream=True)
-            reply = ""
-            for chunk in stream:
-                reply += chunk['message']['content']
+            self.stream = chat(model='gemma3:4b', messages=messages, stream=True)
+            self.reply = ""
+            for chunk in self.stream:
+                self.reply += chunk['message']['content']
                 print(chunk['message']['content'], end='', flush=True)
             
             # Set the model reply as a span attribute
-            span.set_attribute(SpanAttributes.OUTPUT_VALUE, reply)
+            span.set_attribute(SpanAttributes.OUTPUT_VALUE, self.reply)
+            
 
