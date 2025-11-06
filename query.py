@@ -3,11 +3,9 @@ from langchain_ollama import OllamaEmbeddings
 from typing import List
 from langchain_core.documents import Document
 from langchain_core.runnables import chain
-from langchain_milvus import Milvus
 import sys
 import os
 import requests
-import ollama
 from langchain_chroma import Chroma
 
 req = requests.get("http://localhost:11434/api/tags").json()
