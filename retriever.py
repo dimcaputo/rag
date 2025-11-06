@@ -27,32 +27,5 @@ class Inquisita:
             for doc in retrieved_docs
         )
         return serialized, retrieved_docs
-
-
-    # def query(self, query):
-    #     tracer_provider = register(project_name="Inquisita", auto_instrument=True)
-    #     tracer = tracer_provider.get_tracer(__name__)
-
-    #     with tracer.start_as_current_span("chat_interaction") as span:
-    #         # Set the user query as a span attribute
-    #         span.set_attribute(SpanAttributes.INPUT_VALUE, query)
-            
-    #         context, retrieved_docs = self.retrieve_context(query)
-    #         span.set_attribute(SpanAttributes.METADATA, json.dumps(context, indent=4))
-    #         span.set_attribute(SpanAttributes.RETRIEVAL_DOCUMENTS, str(retrieved_docs))
-
-
-    #         messages = [{'role': 'user', 'content': f'{query}. Please take into account the following information: {context}'}]
-    #         span.set_attribute(SpanAttributes.LLM_PROMPTS, messages[0]['content'])
-
-
-    #         self.stream = chat(model='gemma3:4b', messages=messages, stream=True)
-    #         self.reply = ""
-    #         for chunk in self.stream:
-    #             self.reply += chunk['message']['content']
-    #             print(chunk['message']['content'], end='', flush=True)
-            
-    #         # Set the model reply as a span attribute
-    #         span.set_attribute(SpanAttributes.OUTPUT_VALUE, self.reply)
             
 
