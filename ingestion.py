@@ -73,16 +73,18 @@ if __name__ == "__main__":
             os.system("ollama pull nomic-embed-text")
         embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
+        if os.path.exists("./chroma_langchain_db"):
+            print("\nDatabase at ./chroma_langchain_db loaded\n")
+        else:
+            print("\nDatabase at ./chroma_langchain_db created\n")
+
         vector_store = Chroma(
             collection_name="example_collection",
             embedding_function=embeddings,
             persist_directory="./chroma_langchain_db",  # Where to save data locally, remove if not necessary
         )
         
-        if os.path.exists("./chroma_langchain_db"):
-            print("\nDatabase at ./chroma_langchain_db loaded\n")
-        else:
-            print("\nDatabase at ./chroma_langchain_db created\n")
+
 
         print("\n## INGESTING FILES ####################################\n")
         ids = vector_store.add_documents(documents=all_splits)
