@@ -2376,6 +2376,25 @@ wheels = [
 ]
 
 [[package]]
+name = "openai"
+version = "2.7.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+    { name = "distro" },
+    { name = "httpx" },
+    { name = "jiter" },
+    { name = "pydantic" },
+    { name = "sniffio" },
+    { name = "tqdm" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/51/a2/f4023c1e0c868a6a5854955b3374f17153388aed95e835af114a17eac95b/openai-2.7.1.tar.gz", hash = "sha256:df4d4a3622b2df3475ead8eb0fbb3c27fd1c070fa2e55d778ca4f40e0186c726", size = 595933, upload-time = "2025-11-04T06:07:23.069Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8c/74/6bfc3adc81f6c2cea4439f2a734c40e3a420703bbcdc539890096a732bbd/openai-2.7.1-py3-none-any.whl", hash = "sha256:2f2530354d94c59c614645a4662b9dab0a5b881c5cd767a8587398feac0c9021", size = 1008780, upload-time = "2025-11-04T06:07:20.818Z" },
+]
+
+[[package]]
 name = "openinference-instrumentation"
 version = "0.1.42"
 source = { registry = "https://pypi.org/simple" }
@@ -4119,6 +4138,7 @@ dependencies = [
     { name = "langchain-ollama" },
     { name = "langchain-text-splitters" },
     { name = "ollama" },
+    { name = "openai" },
     { name = "openinference-instrumentation-google-genai" },
     { name = "pdfminer-six" },
     { name = "pytesseract" },
@@ -4140,6 +4160,7 @@ requires-dist = [
     { name = "langchain-ollama" },
     { name = "langchain-text-splitters" },
     { name = "ollama" },
+    { name = "openai", specifier = ">=2.7.1" },
     { name = "openinference-instrumentation-google-genai", specifier = ">=0.1.8" },
     { name = "pdfminer-six" },
     { name = "pytesseract" },

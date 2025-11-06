@@ -17,6 +17,7 @@ dependencies = [
     "langchain-ollama",
     "langchain-text-splitters",
     "ollama",
+    "openai>=2.7.1",
     "openinference-instrumentation-google-genai>=0.1.8",
     "pdfminer-six",
     "pytesseract",
