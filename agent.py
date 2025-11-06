@@ -4,13 +4,16 @@ import os
 import requests
 from langchain_chroma import Chroma
 import sys
-from ollama import chat
+from ollama import chat, AsyncClient
 import json
 from phoenix.otel import register
 from openinference.semconv.trace import SpanAttributes
+import phoenix as px
+
 
 class Inquisita:
     def __init__(self):
+        session = px.launch_app() 
         self.req = requests.get("http://localhost:11434/api/tags").json()
         model_is_nomic = [True for model in self.req['models'] if "nomic-embed-text" in model['name']]
         if not any(model_is_nomic):
