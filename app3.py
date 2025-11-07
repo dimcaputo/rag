@@ -41,7 +41,7 @@ def start_chat():
 
     prompt = (
             "You have access to a tool that retrieves context from the CV of Dimitri Caputo. "
-            "Use the tool to help answer user queries."
+            "Use it to inform your answers, but always provide a complete and natural language reply to the user."
         )
 
     agent = create_agent(model, tools, system_prompt=prompt)
@@ -60,6 +60,7 @@ async def main(message: cl.Message):
             stream_mode="messages",
         ):
             await reply.stream_token(token.content)
+
 
     await reply.send()
             
