@@ -1,5 +1,4 @@
-# rag
-Training on RAG
+# My first RAG
 
 This project uses uv as the environement manager.
 To install uv:
@@ -7,8 +6,13 @@ To install uv:
 $ curl -LsSf https://astral.sh/uv/install.sh | sh
 ~~~
 
-Please download and install Ollama prior to running the scripts (https://ollama.com/download).
+Please get a Google API key and save it in a .env file:
+~~~bash
+$ touch .env
+$ echo GOOGLE_API_KEY=your_key >> .env
+~~~
 
+Please download and install Ollama prior to running the scripts (https://ollama.com/download).
 The embedding model will be pulled by the scripts.
 
 To build the database:
@@ -17,13 +21,8 @@ To build the database:
 $ uv run ingestion.py <path/to/folder/containing/pdfs>
 ~~~
 
-To query the database:
+To launch the app:
 
 ~~~bash
-$ uv run query.py <your query>
-~~~
-
-To test that the retriever is working properly: 
-~~~bash
-$ uv run test_retriever.py
+$ uv run chainlit run app4.py -w
 ~~~
