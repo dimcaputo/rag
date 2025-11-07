@@ -24,6 +24,6 @@ dependencies = [
     "tesseract",
     "transformers",
     "openinference-instrumentation-langchain",
-    "deepeval>=3.3.9",
+    "deepeval",
 ]
 
