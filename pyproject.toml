@@ -5,23 +5,25 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "arize-phoenix>=12.9.0",
-    "arize-phoenix-otel>=0.13.1",
-    "chainlit>=2.8.4",
+    "arize-phoenix",
+    "arize-phoenix-otel",
+    "chainlit",
     "chromadb",
-    "google-genai>=1.48.0",
-    "langchain",
+    "google-genai",
+    "langchain[google-genai,openai]",
     "langchain-chroma",
     "langchain-community",
     "langchain-core",
     "langchain-ollama",
     "langchain-text-splitters",
     "ollama",
-    "openai>=2.7.1",
-    "openinference-instrumentation-google-genai>=0.1.8",
+    "openai",
+    "openinference-instrumentation-google-genai",
     "pdfminer-six",
     "pytesseract",
     "tesseract",
     "transformers",
+    "openinference-instrumentation-langchain",
+    "deepeval>=3.3.9",
 ]
 
