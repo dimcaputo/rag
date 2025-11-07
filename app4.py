@@ -110,13 +110,8 @@ def start_chat():
     # Compile
     graph = workflow.compile()
 
-    # prompt = (
-    #         "You have access to a tool that retrieves context from the CV of Dimitri Caputo. "
-    #         "Use it to inform your answers, but always provide a complete and natural language reply to the user."
-    #     )
-
-    # agent = create_agent(model, tools, system_prompt=prompt)
     cl.user_session.set("graph", graph)
+
 
 @cl.on_message
 async def main(message: cl.Message):
