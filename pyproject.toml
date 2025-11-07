@@ -25,5 +25,6 @@ dependencies = [
     "transformers",
     "openinference-instrumentation-langchain",
     "deepeval",
+    "ipython>=9.7.0",
 ]
 
