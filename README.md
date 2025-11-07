@@ -24,5 +24,5 @@ $ uv run ingestion.py <path/to/folder/containing/pdfs>
 To launch the app:
 
 ~~~bash
-$ uv run chainlit run app4.py -w
+$ uv run chainlit run app.py -w
 ~~~
