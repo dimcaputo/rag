@@ -26,5 +26,6 @@ dependencies = [
     "openinference-instrumentation-langchain",
     "deepeval",
     "ipython>=9.7.0",
+    "langchain-google-vertexai>=3.0.2",
 ]
 
